@@ -6,7 +6,7 @@ public class FuncionCirculo {
 
        cir.setPii(3.1416);
        cir.setRadio(20);
-       System.out.println(cir.getArea());
-       System.out.println(cir.getPerimeter());
+       System.out.println("Area:" + cir.getArea());
+       System.out.println("Perimetro:" + cir.getPerimeter());
     }
 }

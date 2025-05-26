@@ -8,7 +8,7 @@ public class FuncionTriangulo {
         tri.setAltura(15);
         tri.setLado(10);
 
-        System.out.println(tri.getArea());
-        System.out.println(tri.getPerimeter());
+        System.out.println("Area:" + tri.getArea());
+        System.out.println("Perimetro:" + tri.getPerimeter());
     }
 }
