@@ -4,6 +4,7 @@ public class App {
         Computadora compu = new Computadora();
         
         compu.encender();
-        compu.encender();        compu.apagar();
+        compu.encender();        
+        compu.apagar();
     }
 }
