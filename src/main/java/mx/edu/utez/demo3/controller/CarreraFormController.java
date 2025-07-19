@@ -12,6 +12,8 @@ public class CarreraFormController {
 
     @FXML private TextField txtNombreCarrera;
 
+    @FXML private TextField txtDescripcion;
+
     @FXML private Button btnCrear;
 
     @FXML private Button btnCancelar;
@@ -26,6 +28,7 @@ public class CarreraFormController {
     @FXML
     private void onSubmit() {
         String nombre = txtNombreCarrera.getText().trim();
+        String descripcion = txtDescripcion.getText().trim();
 
         if (nombre.isEmpty()) {
             showAlert("¡Error!", "El nombre de la carrera es obligatorio");
@@ -34,6 +37,7 @@ public class CarreraFormController {
 
         Carrera carrera = new Carrera();
         carrera.setNombre(nombre);
+        carrera.setDescripcion(descripcion);
 
         try {
             daoCarrera.create(carrera);

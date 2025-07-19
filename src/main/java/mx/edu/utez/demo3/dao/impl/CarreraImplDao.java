@@ -56,23 +56,21 @@ public class CarreraImplDao implements ICarreraDao {
         return carrera;
     }
 
-    @Override
-    public void create(Carrera carrera) throws SQLException {
-        String query = "INSERT INTO ADMIN.CARRERA (NOMBRE, DESCRIPCION) VALUES (?, ?)";
-        try {
-            Connection conn = DBConnection.getConnection();
-            PreparedStatement ps = conn.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
-            ps.setString(1, carrera.getNombre());
-            ps.setString(2, carrera.getDescripcion());
-            ps.executeUpdate();
-            ResultSet rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                System.out.println("Creado con exito");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+  @Override
+public void create(Carrera carrera) throws SQLException {
+    String query = "INSERT INTO ADMIN.CARRERA (NOMBRE, DESCRIPCION) VALUES (?, ?)";
+    try {
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, carrera.getNombre());
+        ps.setString(2, carrera.getDescripcion());
+        ps.executeUpdate();
+        System.out.println("¡Carrera creada con éxito!");
+    } catch (Exception e) {
+        throw new RuntimeException(e);
     }
+}
+
 
     @Override
     public void update(Carrera carrera) throws SQLException {
