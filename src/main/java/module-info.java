@@ -8,6 +8,7 @@
 
     opens mx.edu.utez.demo3 to javafx.fxml;
     opens mx.edu.utez.demo3.controller to javafx.fxml;
+    opens mx.edu.utez.demo3.model to javafx.base, javafx.fxml;
     exports mx.edu.utez.demo3.ui;
     
 

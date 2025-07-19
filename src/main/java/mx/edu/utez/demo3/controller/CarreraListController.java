@@ -34,12 +34,15 @@ public class CarreraListController {
 
     CarreraImplDao dao = new CarreraImplDao();
 
+    
     @FXML
     private void initialize() {
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        loadCarreras();
+    colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+    colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+    loadCarreras();
     }
+
+
 
     private void loadCarreras() {
         try {
