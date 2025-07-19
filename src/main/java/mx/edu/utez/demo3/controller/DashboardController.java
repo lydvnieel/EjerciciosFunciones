@@ -22,11 +22,21 @@ import javafx.stage.Stage;
     e.printStackTrace();
     throw new RuntimeException(e);
     }
-
-
-
       }
 
+
+      @FXML
+      private void botonCarrera(ActionEvent event) {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/mx/edu/utez/demo3/view/carrera_list.fxml"));
+      try {
+      Scene scene = new Scene(loader.load());
+      Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+      stage.setScene(scene);
+      }catch (Exception e) {
+      e.printStackTrace();
+      throw new RuntimeException(e);
+      }
+       }
 
 
 }

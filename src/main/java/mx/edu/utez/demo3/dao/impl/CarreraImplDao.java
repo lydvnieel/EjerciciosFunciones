@@ -113,7 +113,7 @@ public class CarreraImplDao implements ICarreraDao {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Alumno alumno = new Alumno();
-                alumno.setId(rs.getInt("ID"));
+                alumno.setId(rs.getInt("ID_ALUMNO"));
                 alumno.setNombre(rs.getString("NOMBRE"));
                 alumno.setApellidos(rs.getString("APELLIDOS"));
                 alumno.setCorreo(rs.getString("CORREO"));
