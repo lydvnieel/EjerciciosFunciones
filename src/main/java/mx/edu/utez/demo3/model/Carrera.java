@@ -1,13 +1,11 @@
 package mx.edu.utez.demo3.model;
-
-
 import java.util.List;
 
 public class Carrera {
 
     private int id;
     private String nombre;
-    private String descrpcion;
+    private String descripcion;
     private List<Alumno> alumnos;
 
     public Carrera() {
@@ -29,13 +27,13 @@ public class Carrera {
         this.id = id;
     }
 
-    public String getDescrpcion() {
-        return descrpcion;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescrpcion(String descrpcion) {
-        this.descrpcion = descrpcion;
-    }
+    public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+}
 
     public List<Alumno> getAlumnos() {
         return alumnos;
@@ -44,4 +42,12 @@ public class Carrera {
     public void setAlumnos(List<Alumno> alumnos) {
         this.alumnos = alumnos;
     }
+
+
+    @Override
+
+    public String toString(){
+        return nombre;
+    }
+
 }

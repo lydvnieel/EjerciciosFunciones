@@ -21,7 +21,7 @@ public class AlumnoFormController {
     
    @FXML private TextField txtNombres;
 
-   @FXML private TextField txApellidos;
+   @FXML private TextField txtApellidos;
 
    @FXML private TextField txtCorreo;
 
@@ -41,6 +41,7 @@ public class AlumnoFormController {
    private void initialize(){
     try {
         List<Carrera> carreras = daoCarrera.findAll();
+        System.out.println("Carreras: " + carreras.size());
         cbCarrera.setItems(FXCollections.observableList(carreras));
         
     } catch (Exception e) {
@@ -53,7 +54,7 @@ public class AlumnoFormController {
    
    private void onSubmit(){
      String nombres   = txtNombres.getText().trim();
-     String apellidos = txApellidos.getText().trim();
+     String apellidos = txtApellidos.getText().trim();
      String correo = txtCorreo.getText().trim();
      LocalDate fechaNacimiento = dpFechaNacimiento.getValue();
      Carrera carrera = cbCarrera.getSelectionModel().getSelectedItem();

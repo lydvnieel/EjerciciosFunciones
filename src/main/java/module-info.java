@@ -1,4 +1,4 @@
-module mx.edu.utez.demo3 {
+    module mx.edu.utez.demo3 {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -8,6 +8,7 @@ module mx.edu.utez.demo3 {
 
     opens mx.edu.utez.demo3 to javafx.fxml;
     opens mx.edu.utez.demo3.controller to javafx.fxml;
-    exports mx.edu.utez.demo3;
+    exports mx.edu.utez.demo3.ui;
+    
 
-}
+}   

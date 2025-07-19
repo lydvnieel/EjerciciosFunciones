@@ -2,7 +2,9 @@ package mx.edu.utez.demo3.model;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class Alumno {
     private String nombre;
@@ -14,6 +16,7 @@ public class Alumno {
     private int id;
 
     public Alumno() {
+        this.asignaturas = new ArrayList<>();
 
     }
 
@@ -23,6 +26,7 @@ public class Alumno {
         this.correo = correo;
         this.fechaNacimiento = fechaNacimiento;
         this.idCarrera = idCarrera;
+        this.asignaturas = new ArrayList<>();
     }
 
     public String getApellidos() {

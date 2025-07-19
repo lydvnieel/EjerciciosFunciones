@@ -68,12 +68,11 @@ public class AlumnoListController implements Initializable {
 
         // Columna de asignaturas: junta nombres con comas
         colAsignaturas.setCellValueFactory(data -> {
-            List<Asignatura> lista = data.getValue().getAsignaturas();
-            String texto = String.join(", ",
-                    lista.stream().map(Asignatura::getNombre).toList()
-            );
-            return new ReadOnlyStringWrapper(texto);
+        List<Asignatura> lista = data.getValue().getAsignaturas();
+        String texto = (lista == null) ? "" : String.join(", ", lista.stream().map(Asignatura::getNombre).toList());
+        return new ReadOnlyStringWrapper(texto);
         });
+
 
         // Column “Acciones”
         colAcciones.setCellFactory(col -> new TableCell<>() {

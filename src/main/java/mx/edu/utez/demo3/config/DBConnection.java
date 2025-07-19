@@ -25,11 +25,16 @@ public class DBConnection {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
+    
+
     public static void main(String[] args) throws SQLException {
         try (Connection conn = getConnection()) {
+        
             System.out.println("¡Conexión exitosa!");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    
 }

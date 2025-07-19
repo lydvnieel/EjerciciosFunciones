@@ -15,7 +15,7 @@ public class CarreraImplDao implements ICarreraDao {
 
     @Override
     public List<Carrera> findAll() throws SQLException {
-        String query = "SELECT * FROM CARRERA";
+        String query = "SELECT * FROM ADMIN.CARRERA";
         List<Carrera> carreras = new ArrayList<>();
         try{
             Connection conn = DBConnection.getConnection();
@@ -25,7 +25,7 @@ public class CarreraImplDao implements ICarreraDao {
                 Carrera carrera = new Carrera();
                 carrera.setId(rs.getInt("ID"));
                 carrera.setNombre(rs.getString("NOMBRE"));
-                carrera.setDescrpcion(rs.getString("DESCRIPCION"));
+                carrera.setDescripcion(rs.getString("DESCRIPCION"));
                 carrera.setAlumnos(getAlumnosByCarrera(carrera.getId()));
                 carreras.add(carrera);
             }
@@ -37,7 +37,7 @@ public class CarreraImplDao implements ICarreraDao {
 
     @Override
     public Carrera findById(int id) throws SQLException {
-        String query = "SELECT * FROM CARRERA WHERE ID=?";
+        String query = "SELECT * FROM ADMIN.CARRERA WHERE ID=?";
         Carrera carrera = new Carrera();
         try {
             Connection conn = DBConnection.getConnection();
@@ -46,8 +46,8 @@ public class CarreraImplDao implements ICarreraDao {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 carrera.setId(rs.getInt("ID"));
-                carrera.setNombre(rs.getString("NOMBRES"));
-                carrera.setDescrpcion(rs.getString("DESCRIPCION"));
+                carrera.setNombre(rs.getString("NOMBRE"));
+                carrera.setDescripcion(rs.getString("DESCRIPCION"));
                 carrera.setAlumnos(getAlumnosByCarrera(carrera.getId()));
             }
         } catch (Exception e) {
@@ -58,12 +58,12 @@ public class CarreraImplDao implements ICarreraDao {
 
     @Override
     public void create(Carrera carrera) throws SQLException {
-        String query = "INSERT INTO CARRERA (NOMBRE, DESCRIPCION) VALUES (?, ?)";
+        String query = "INSERT INTO ADMIN.CARRERA (NOMBRE, DESCRIPCION) VALUES (?, ?)";
         try {
             Connection conn = DBConnection.getConnection();
             PreparedStatement ps = conn.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, carrera.getNombre());
-            ps.setString(2, carrera.getDescrpcion());
+            ps.setString(2, carrera.getDescripcion());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
@@ -76,12 +76,12 @@ public class CarreraImplDao implements ICarreraDao {
 
     @Override
     public void update(Carrera carrera) throws SQLException {
-        String query = "UPDATE CARRERA SET NOMBRE=?, DESCRIPCION=? WHERE ID=?";
+        String query = "UPDATE ADMIN.CARRERA SET NOMBRE=?, DESCRIPCION=? WHERE ID=?";
         try {
             Connection conn = DBConnection.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, carrera.getNombre());
-            ps.setString(2, carrera.getDescrpcion());
+            ps.setString(2, carrera.getDescripcion());
             ps.setInt(3, carrera.getId());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -91,7 +91,7 @@ public class CarreraImplDao implements ICarreraDao {
 
     @Override
     public void delete(int id) throws SQLException {
-        String query = "DELETE FROM CARRERA WHERE ID=?";
+        String query = "DELETE FROM ADMIN.CARRERA WHERE ID=?";
         try {
             Connection conn = DBConnection.getConnection();
             PreparedStatement ps = conn.prepareStatement(query);
@@ -103,8 +103,8 @@ public class CarreraImplDao implements ICarreraDao {
     }
 
     private List<Alumno> getAlumnosByCarrera(int id) {
-        String query = "SELECT a.* FROM ALUMNO a " +
-                "JOIN CARRERA c ON a.ID_CARRERA = c.ID WHERE c.ID = ?";
+        String query = "SELECT a.* FROM ADMIN.ALUMNO a " +
+                "JOIN ADMIN.CARRERA c ON a.ID_CARRERA = c.ID WHERE c.ID = ?";
         List<Alumno> alumnos = new ArrayList<>();
         try {
             Connection con = DBConnection.getConnection();
@@ -114,7 +114,7 @@ public class CarreraImplDao implements ICarreraDao {
             while(rs.next()){
                 Alumno alumno = new Alumno();
                 alumno.setId(rs.getInt("ID"));
-                alumno.setNombre(rs.getString("NOMBRES"));
+                alumno.setNombre(rs.getString("NOMBRE"));
                 alumno.setApellidos(rs.getString("APELLIDOS"));
                 alumno.setCorreo(rs.getString("CORREO"));
                 alumno.setFechaNacimiento(rs.getDate("FECHA_NACIMIENTO").toLocalDate());
@@ -123,7 +123,7 @@ public class CarreraImplDao implements ICarreraDao {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Error::   ");
+            System.out.println("Error: ");
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
@@ -134,12 +134,13 @@ public class CarreraImplDao implements ICarreraDao {
         CarreraImplDao dao = new CarreraImplDao();
         try {
             List<Carrera> carreras = dao.findAll();
+            System.out.println("Cantidad de carreras: " + carreras.size());
             for (Carrera c : carreras) {
                 System.out.println(c.getNombre());
-                System.out.println(c.getDescrpcion());
+                System.out.println(c.getDescripcion());
 
                 for (Alumno alumno : c.getAlumnos()) {
-                    System.out.println(alumno.getNombre());
+                    System.out.println(" - " + alumno.getNombre());
                 }
                 System.out.println("----------------");
             }
