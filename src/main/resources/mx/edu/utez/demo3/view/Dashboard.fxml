@@ -1,0 +1,26 @@
+
+
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmls:fx="http://javafx.com/fxml"
+            fx:controller="mx.edu.utez.demo3.controller.DashboardController"
+            prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/dashboard.css">
+
+
+
+<top>
+<HBox fx:id="navbar" alignment="CENTER_RIGHT" spacing="15">
+       <padding> 
+     <Insets top="10" left="10" right="10" bottom="10"/>
+     </padding>
+    <Button fx:id="btnLogout" text="Logout" styleClass="btn-logout"/>
+  </HBox> 
+</top>
+
+<center>
+  <HBox fx:id="navButtons" allignment="Center" spacing="20">
+   <Button fx:id="btnAlumno" text="Alumno" styleClass="nav-btn" onAction="#onAlumnos"/>
+   <Button fx:id="btnCarrera" text="Carrera" styleClass="nav-btn"/>
+   <Button fx:id="btnAsignatura" text="Asignatura" styleClass="nav-btn"/>
+</center>
