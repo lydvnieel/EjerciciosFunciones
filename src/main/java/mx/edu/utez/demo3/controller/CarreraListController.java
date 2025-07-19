@@ -54,17 +54,21 @@ public class CarreraListController {
     }
 
     @FXML
-    private void onCrearCarrera(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/mx/edu/utez/demo3/view/carrera_form.fxml"));
-            Stage stage = new Stage();
-            stage.setScene(new Scene(loader.load()));
-            stage.showAndWait();
-            loadCarreras();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+private void onCrearCarrera(ActionEvent event) {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/mx/edu/utez/demo3/view/carrera_form.fxml"));
+        Scene scene = new Scene(loader.load());
+        scene.getStylesheets().add(getClass().getResource("/mx/edu/utez/demo3/css/carrera_form.css").toExternalForm());
+        
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.showAndWait();
+
+        loadCarreras();
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+}
 
     @FXML
     private void irADashboard(ActionEvent event) {
